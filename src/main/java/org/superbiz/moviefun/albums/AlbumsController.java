@@ -10,8 +10,6 @@ import org.springframework.web.multipart.MultipartFile;
 import org.superbiz.moviefun.blobstore.Blob;
 import org.superbiz.moviefun.blobstore.BlobStore;
 
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URISyntaxException;
@@ -33,7 +31,6 @@ public class AlbumsController {
         this.albumsBean = albumsBean;
         this.blobStore = blobStore;
     }
-
 
     @GetMapping
     public String index(Map<String, Object> model) {
@@ -80,7 +77,7 @@ public class AlbumsController {
     }
 
     private Blob createDefaultCover() {
-        InputStream inputStream = ClassLoader.getSystemResourceAsStream("default-cover.jpg");
+        InputStream inputStream = this.getClass().getClassLoader().getResourceAsStream("default-cover.jpg");
         return new Blob("default-cover.jpg", inputStream, IMAGE_JPEG_VALUE);
     }
 }
