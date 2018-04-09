@@ -1,3 +1,9 @@
+logging.level:
+    root: INFO
+    org.superbiz.moviefun.albums: ERROR
+    org.superbiz.moviefun.movies: DEBUG
+
+
 spring:
   jpa:
     generate-ddl: true
